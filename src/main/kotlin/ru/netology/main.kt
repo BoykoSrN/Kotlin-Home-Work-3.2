@@ -15,8 +15,9 @@ fun paymentSystem(paymentCard : String = "VK Pay", monthlyTransfers : Int = 0, c
 
     return when (paymentCard) {
         "VK Pay" -> 0
-        "Mastercard", "Maestro" -> if (monthlyTransfers > 7_500_000) commissionMastercardMaestro(currentTransfer)
-        else 0
+        "Mastercard", "Maestro" -> if (monthlyTransfers > 7_500_000) {
+            commissionMastercardMaestro(currentTransfer)
+        } else 0
         "Visa", "Mir" -> commissionVisaMir(currentTransfer)
         else -> false
     }
